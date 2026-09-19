@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping List</title>
+</head>
+
+<body>
+    <h1>Shopping List</h1>
+    <form id="my-list">
+        <input type="text" id="list-item">
+        <button>Add</button>
+    </form>
+    <h1>My Final Shopping List</h1>
+    <ul id="listFinal"></ul>
+    <script>
+        let listitem = document.getElementById("list-item");
+        let listFinal = document.getElementById("listFinal");
+        let myForm = document.getElementById("my-list");
+        myForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            createItem(listitem.value);
+        })
+        function createItem(input11) {
+            let items = `<li> ${input11} <button onClick = "deleteelement(this)">Delete</button></li>`
+            listFinal.insertAdjacentHTML("beforeend", items);
+            listitem.value = "";
+            listitem.focus();
+        }
+        function deleteelement(ElementToDelete) {
+            ElementToDelete.parentElement.remove();
+        }
+    </script>
+</body>
+
+</html>
